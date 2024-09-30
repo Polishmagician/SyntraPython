@@ -14,14 +14,14 @@ test = 0
 tot = 0
 
 #randomizing scores
-def random_scores(students:list):
-    for s in range(len(students)):
-        punten = [students[s]]
-        for i in range(len(subjects)):
-            score = rd.randint(1,10)
-            punten.append(score)
-        saved_punten.append(punten)
-    saved_punten.insert(0,heading)
+
+for s in range(len(students)):
+    punten = [students[s]]
+    for i in range(len(subjects)):
+        score = rd.randint(1,10)
+        punten.append(score)
+    saved_punten.append(punten)
+saved_punten.insert(0,heading)
 
 #Calculate average
 for i in range(len(subjects)):

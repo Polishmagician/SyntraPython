@@ -7,8 +7,8 @@ def matrix_creator():
             print(item, end ="\t")
         print()
 def weer():
-    min_temp = ["Min temp",8,11,10,7,6]
-    max_temp = ["Max temp",15,14,14,15,16]
+    min_temp = ["Min temp",12,9,6,3,3]
+    max_temp = ["Max temp",16,16,16,14,16]
     avg_min = sum(min_temp[1:])/len(min_temp[1:])
     avg_max = sum(max_temp[1:])/len(max_temp[1:])
     min_temp.append(avg_min)
@@ -19,4 +19,5 @@ def weer():
         for item in row:
             print(item, end="\t")
         print()
+weer()
 

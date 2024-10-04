@@ -40,6 +40,8 @@ for d in range(3):
 data.append(daily_run)
 
 
+new_person()
+
 #Visualize
 heading = ["Naam", "Dag 1", "Dag 2", "Dag 3", "Totaal"]
 

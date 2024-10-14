@@ -54,7 +54,6 @@ def create_list(personeel):
         for k,v in inner.items():
             row.append(v)
         personeel_list.append(row)
-    print(tabulate(personeel_list, headers=kolom))
     return personeel_list
 
 
@@ -66,11 +65,9 @@ def add_personnel(personeel,personeel_list):
                      input("Geef de functie: "),
                      input("Geef de afdeling: ")]
     personeel_list.append(new_personnel)
-    print(tabulate(personeel_list, headers=kolom))
     return personeel_list
 
 def remove_personnel(personeelsleden,personeel_list):
-    print(tabulate(personeel_list,headers=kolom))
     id_to_remove = int(input("Geef het ID dat je wilt verwijderen: "))
     if id_to_remove in personeelsleden.keys():
         del personeelsleden[id_to_remove]
@@ -79,8 +76,36 @@ def remove_personnel(personeelsleden,personeel_list):
     else:
         print(f"{id_to_remove} is geen geldige ID")
 
+def wijzig_item(personeelsleden):
+    id = int(input("Welk ID wil je wijzigen? "))
+    keys = ["Naam","Leeftijd","Woonplaats","Functie","Afdeling"]
+    for item in keys:
+        print(item)
+    veld = input("Welk veld wil je wijzigen? (Typ uit lijst hierboven)" )
+    if veld in keys:
+        new_veld = input("In wat wil je het wijzigen? ")
+        personeelsleden[id][veld] = new_veld
+    else:
+        print(f"{veld} is geen geldige keuze")
 
-# create_list(personeelsleden)
-# add_personnel(personeelsleden,create_list(personeelsleden))
-remove_personnel(personeelsleden,create_list(personeelsleden))
+def sort_leeftijd(personeelsleden):  #Ik maak hier een lijst, maar mijn create maakt van een dict een lijst. Ik moet die create lijst eens herbekijken of dat wel nodig is
+    sorted_list = sorted(personeelsleden.items(), key = lambda item: item[1]["Naam"])
+    return sorted_list
 
+def controller(personeelsleden):
+    keuze = ""
+    while keuze != "6":
+        print("1: Toon de huidige tabel", "2: Voeg een ID toe", "3: Verwijder een ID", "4: Wijzig een veld","5: Sorteer op leeftijd", "6: STOP")
+        keuze = input("Wat wil je doen? ")
+        if keuze == "1":
+            pass
+        elif keuze == "2":
+            add_personnel(personeelsleden, create_list(personeelsleden))
+        elif keuze == "3":
+            remove_personnel(personeelsleden, create_list(personeelsleden))
+        elif keuze == "4":
+            wijzig_item(personeelsleden)
+        elif keuze == "5":
+            sort_leeftijd(personeelsleden)
+        print(tabulate(create_list(personeelsleden), headers=kolom))
+controller(personeelsleden)

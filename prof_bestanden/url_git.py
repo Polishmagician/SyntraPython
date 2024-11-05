@@ -1,0 +1,6 @@
+les7 = "https://github.com/bjornpythonsyntra/les7_pf_2425.git"
+les8 = "https://github.com/bjornpythonsyntra/les8_pfd_voorbeelden"
+les9 = "https://github.com/bjornpythonsyntra/les_9_dictionaries"
+les10 = "https://github.com/bjornpythonsyntra/les10_pdf_24"
+les11 = "https://github.com/bjornpythonsyntra/les11_pfd_vb"
+les12 = "https://github.com/bjornpythonsyntra/pfd_les12_2425"

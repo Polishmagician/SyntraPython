@@ -2,5 +2,11 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/prof_bestanden/les10_pdf_24" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/prof_bestanden/les11_pfd_vb" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/prof_bestanden/les7_pf_2425" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/prof_bestanden/les8_pfd_voorbeelden" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/prof_bestanden/les_9_dictionaries" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/prof_bestanden/pfd_les12_2425" vcs="Git" />
   </component>
 </project>

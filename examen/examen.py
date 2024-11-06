@@ -11,11 +11,8 @@ headers = []
 with open(bestand, mode = 'r', newline='', encoding='utf-8') as  file:
     reader = csv.reader(file)
 
-    try:
-        #Lees de header in voor de list:
-        headers = next(reader)
-    except StopIteration:
-        print("Het CSV-bestand is leeg. Voeg een nieuwe dokter toe om te beginnen")
+    #Lees de header in voor de list:
+    headers = next(reader)
 
     #Voeg de bestaande gegevens toe aan de list
     for row in reader:

@@ -12,14 +12,15 @@ with open(bestand, mode = 'r', newline='', encoding='utf-8') as  file:
     reader = csv.reader(file)
 
     try:
-        #Lees de header in:
+        #Lees de header in voor de list:
         headers = next(reader)
     except StopIteration:
         print("Het CSV-bestand is leeg. Voeg een nieuwe dokter toe om te beginnen")
 
-    #Voeg de bestaande gegevens
+    #Voeg de bestaande gegevens toe aan de list
     for row in reader:
         data.append(row)
+    # Hierboven is de data van een csv naar een list getransformeerd
 
 #Voeg een muzikant toe
 def nieuwe_muzikant():

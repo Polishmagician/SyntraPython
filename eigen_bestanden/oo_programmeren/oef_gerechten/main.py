@@ -25,4 +25,4 @@ hoofdgerecht = ["Hoofdgerecht",dag_menu_1['hoofdgerecht'],dag_menu_2['hoofdgerec
 dessert = ["Dessert",dag_menu_1['dessert'],dag_menu_2['dessert'],dag_menu_3['dessert']]
 
 vis_data = [voorgerecht,hoofdgerecht,dessert]
-print(tabulate(vis_data, headers=headers))
+# print(tabulate(vis_data, headers=headers))

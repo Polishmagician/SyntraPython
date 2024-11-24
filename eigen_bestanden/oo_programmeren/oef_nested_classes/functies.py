@@ -1,6 +1,7 @@
 from data_medewerkers import *
 from data_wagens import *
 from tabulate import tabulate
+import csv
 
 
 def toon_personeel():
@@ -70,18 +71,18 @@ def voeg_personeel_toe():
                                              new_personeel['maandloon'],
                                              new_personeel['afdeling'],
                                              new_personeel['bedrijfswagen']))
-        toon_bediendes()
+        return bedienden_data_class
     else:
         new_personeel["uurloon"] = input("Wat is het uurloon ?")
         new_personeel['uren_gewerkt'] = input("Hoeveel uren gewerkt ? ")
-        bedienden_data_class.append(bediende(new_personeel['id'],
+        arbeiders_data_class.append(arbeider(new_personeel['id'],
                                              new_personeel['naam'],
                                              new_personeel['leeftijd'],
                                              new_personeel['geslacht'],
                                              new_personeel['functie'],
                                              new_personeel['uurloon'],
                                              new_personeel['uren_gewerkt']))
-        toon_arbeiders()
+        return arbeiders_data_class
 
 def voeg_wagen_toe():
     new_auto = {"id": bedrijfswagen.id_wagen+1, "merk": input("Welk merk: "), "model": input("Welk model: "), "bouwjaar": int(input("Welk bouwjaar: "))}
@@ -89,6 +90,9 @@ def voeg_wagen_toe():
     if eigenaar == "ja":
         eigenaar = int(input("Geef ID: "))
         new_auto["eigenaar"] = eigenaar
+        for item in bedienden_data_class:
+            if item.id == eigenaar:
+                item.bedrijfswagen = new_auto['id']
     else:
         new_auto["eigenaar"] = None
     wagens.append(bedrijfswagen(new_auto['id'],
@@ -96,7 +100,7 @@ def voeg_wagen_toe():
                                 new_auto['model'],
                                 new_auto['bouwjaar'],
                                 new_auto['eigenaar']))
-    toon_wagens()
+    return wagens
 
 def ken_wagen_toe_aan_bediende():
     toon_bediendes()
@@ -110,8 +114,7 @@ def ken_wagen_toe_aan_bediende():
         if item.id == auto_id:
             item.eigenaar = bed
             break
-    toon_bediendes()
-    toon_wagens()
+    return bedienden_data_class, wagens
 
 def verwijder_personeelslid():
     toon_personeel()
@@ -119,7 +122,7 @@ def verwijder_personeelslid():
     for index, item in enumerate(personeel_data_class):
         if item.id == per:
             del personeel_data_class[index]
-    toon_personeel()
+    return personeel_data_class
 
 def verander_loon():
     toon_personeel()
@@ -132,7 +135,7 @@ def verander_loon():
             if item.id == id:
                 item.maandloon = loon
                 break
-        toon_bediendes()
+        return bedienden_data_class
     else:
         toon_arbeiders()
         id = int(input("Geef het ID: "))
@@ -141,7 +144,7 @@ def verander_loon():
             if item.id == id:
                 item.uurloon = loon
                 break
-        toon_arbeiders()
+        return arbeiders_data_class
 
 def toon_bedienden_maandloon_meer_dan():
     toon_bediendes()
@@ -156,6 +159,7 @@ def toon_bedienden_maandloon_meer_dan():
         new_data = [p.id, p.naam, p.leeftijd, p.geslacht, p.functie, p.maandloon, p.afdeling, p.bedrijfswagen]
         data.append(new_data)
     print(tabulate(data, headers=headers))
+    return gefilterde_bedienden
 
 def toon_bedienden_bedrijfswagen():
     gefilterde_bedienden = []
@@ -168,6 +172,20 @@ def toon_bedienden_bedrijfswagen():
         new_data = [p.id, p.naam, p.leeftijd, p.geslacht, p.functie, p.maandloon, p.afdeling, p.bedrijfswagen]
         data.append(new_data)
     print(tabulate(data, headers=headers))
+    return gefilterde_bedienden
+
+def wegschrijven(data):
+    with open("data.csv", mode = 'w', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        count = 0
+        while count == 0:
+            for item in data:
+                writer.writerow(item.toHeader())
+                count = 1
+                break
+        for item in data:
+            writer.writerow(item.toIterable())
+        print("\nDe bijgewerkte gegevens zijn succesvol opgeslagen in het bestand.")
 
 
 #Alle functies in een dict

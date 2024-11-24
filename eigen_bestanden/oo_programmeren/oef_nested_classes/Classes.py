@@ -11,6 +11,25 @@ class personeel:
     def __str__(self):
         return f"{self.id_personeel}: {self.naam} is een {self.geslacht} en {self.leeftijd} jaar"
 
+    def toIterable(self):
+        return iter(
+            [
+                self.id,
+                self.naam,
+                self.leeftijd,
+                self.geslacht,
+                self.functie
+            ]
+        )
+    def toHeader(self):
+        return [
+            "id",
+            "naam",
+            "leeftijd",
+            "geslacht",
+            "functie",
+        ]
+
 
 class bediende(personeel):
     def __init__(self, id,naam, leeftijd, geslacht,functie, maandloon, afdeling,bedrijfswagen=None):
@@ -23,6 +42,31 @@ class bediende(personeel):
     def __str__(self):
         return f"{super().__str__()}, verdient {self.maandloon} per maand en werkt in de afdeling {self.afdeling}"
 
+    def toIterable(self):
+        return iter(
+            [
+                self.id,
+                self.naam,
+                self.leeftijd,
+                self.geslacht,
+                self.functie,
+                self.maandloon,
+                self.afdeling,
+                self.bedrijfswagen
+            ]
+        )
+    def toHeader(self):
+        return [
+            "id",
+            "naam",
+            "leeftijd",
+            "geslacht",
+            "functie",
+            "maandloon",
+            "afdeling",
+            "bedrijfswagen"
+        ]
+
 class arbeider(personeel):
 
     def __init__(self, id,naam, leeftijd, geslacht, functie, uurloon, uren_gewerkt):
@@ -32,6 +76,29 @@ class arbeider(personeel):
         personeel.id_personeel -= 1
     def __str__(self):
         return f"{super().__str__()}, verdient {self.uurloon} per uur en werkt {self.aantal_uur} uur"
+
+    def toIterable(self):
+        return iter(
+            [
+                self.id,
+                self.naam,
+                self.leeftijd,
+                self.geslacht,
+                self.functie,
+                self.uurloon,
+                self.aantal_uur,
+            ]
+        )
+    def toHeader(self):
+        return [
+            "id",
+            "naam",
+            "leeftijd",
+            "geslacht",
+            "functie",
+            "uurloon",
+            "aantal uur"
+        ]
 
 class bedrijfswagen:
     id_wagen = 0
@@ -43,3 +110,22 @@ class bedrijfswagen:
         self.eigenaar = eigenaar
         bedrijfswagen.id_wagen += 1
 
+    def toIterable(self):
+        return iter(
+            [
+                self.id,
+                self.merk,
+                self.model,
+                self.bouwjaar,
+                self.eigenaar,
+            ]
+        )
+
+    def toHeader(self):
+        return [
+            "id",
+            "merk",
+            "model",
+            "bouwjaar",
+            "eigenaar"
+        ]

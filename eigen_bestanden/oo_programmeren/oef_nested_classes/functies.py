@@ -154,7 +154,7 @@ def toon_bedienden_maandloon_meer_dan():
     for item in bedienden_data_class:
         if item.maandloon > maandloon:
             gefilterde_bedienden.append(item)
-    headers = ["ID", "Naam", "Leeftijd", "Geslacht", "Functie", "Maandloon", "Afdeling", "Bedrijfswagen"]
+    headers = bedienden_data_class[0].toHeader()
     data = []
     for p in gefilterde_bedienden:
         new_data = [p.id, p.naam, p.leeftijd, p.geslacht, p.functie, p.maandloon, p.afdeling, p.bedrijfswagen]
@@ -167,7 +167,7 @@ def toon_bedienden_bedrijfswagen():
     for item in bedienden_data_class:
         if item.bedrijfswagen is not None:
             gefilterde_bedienden.append(item)
-    headers = ["ID", "Naam", "Leeftijd", "Geslacht", "Functie", "Maandloon", "Afdeling", "Bedrijfswagen"]
+    headers = bedienden_data_class[0].toHeader()
     data = []
     for p in gefilterde_bedienden:
         new_data = [p.id, p.naam, p.leeftijd, p.geslacht, p.functie, p.maandloon, p.afdeling, p.bedrijfswagen]
@@ -176,13 +176,8 @@ def toon_bedienden_bedrijfswagen():
     return gefilterde_bedienden
 
 def wegschrijven(data):
-    count = 0
-    while count == 0:
-        for item in data:
-            bestandsnaam = item.bestandsnaam()
-            headers = item.toHeader()
-            count = 1
-            break
+    bestandsnaam = data[0].bestandsnaam()
+    headers = data[0].toHeader()
 
     with open(bestandsnaam, mode = 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)

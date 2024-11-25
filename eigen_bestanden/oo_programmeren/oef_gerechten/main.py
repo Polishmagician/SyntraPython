@@ -1,4 +1,3 @@
-from c_gerecht import *
 from data_gerechten import *
 import random as rd
 from tabulate import tabulate

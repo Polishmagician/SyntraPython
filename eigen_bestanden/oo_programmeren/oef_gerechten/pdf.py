@@ -1,14 +1,10 @@
-from tabulate import tabulate
+# Import classes and data
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
-
-# Import classes and data
-from c_gerecht import *  # Adjust according to your classes
-from data_gerechten import *  # Adjust according to your data
 from main import *
 
 def create_tables():
-    # Example data
+    #Data te halen uit main
     tables = {}
     for index,menu in enumerate(menus):
         voorgerecht = ["Voorgerecht",menu['voorgerecht']]

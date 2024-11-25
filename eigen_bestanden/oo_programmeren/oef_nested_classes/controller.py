@@ -28,7 +28,6 @@ def controller():
             datasets = [personeel_data_class, bedienden_data_class, arbeiders_data_class, wagens]
             if last_keuze < 5:
                 wegschrijven(datasets[last_keuze-1])
-                break
         keuze = int(keuze)
         if keuze in functie_dict:
             functie_dict[keuze]()

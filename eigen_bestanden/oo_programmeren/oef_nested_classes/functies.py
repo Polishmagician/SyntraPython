@@ -4,6 +4,7 @@ from tabulate import tabulate
 import csv
 
 
+
 def toon_personeel():
     headers = ["ID", "Naam", "Leeftijd", "Geslacht", "Functie"]
     data = []
@@ -175,14 +176,17 @@ def toon_bedienden_bedrijfswagen():
     return gefilterde_bedienden
 
 def wegschrijven(data):
-    with open("data.csv", mode = 'w', newline='', encoding='utf-8') as file:
+    count = 0
+    while count == 0:
+        for item in data:
+            bestandsnaam = item.bestandsnaam()
+            headers = item.toHeader()
+            count = 1
+            break
+
+    with open(bestandsnaam, mode = 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
-        count = 0
-        while count == 0:
-            for item in data:
-                writer.writerow(item.toHeader())
-                count = 1
-                break
+        writer.writerow(headers)
         for item in data:
             writer.writerow(item.toIterable())
         print("\nDe bijgewerkte gegevens zijn succesvol opgeslagen in het bestand.")

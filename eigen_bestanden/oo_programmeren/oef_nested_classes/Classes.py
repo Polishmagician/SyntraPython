@@ -29,6 +29,8 @@ class personeel:
             "geslacht",
             "functie",
         ]
+    def bestandsnaam(self):
+        return "personeel.csv"
 
 
 class bediende(personeel):
@@ -66,6 +68,8 @@ class bediende(personeel):
             "afdeling",
             "bedrijfswagen"
         ]
+    def bestandsnaam(self):
+        return "bedienden.csv"
 
 class arbeider(personeel):
 
@@ -99,6 +103,8 @@ class arbeider(personeel):
             "uurloon",
             "aantal uur"
         ]
+    def bestandsnaam(self):
+        return "arbeiders.csv"
 
 class bedrijfswagen:
     id_wagen = 0
@@ -129,3 +135,5 @@ class bedrijfswagen:
             "bouwjaar",
             "eigenaar"
         ]
+    def bestandsnaam(self):
+        return "wagens.csv"

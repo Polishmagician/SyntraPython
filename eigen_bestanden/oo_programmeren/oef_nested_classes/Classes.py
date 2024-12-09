@@ -1,3 +1,5 @@
+#tip in het algemeen= werken met isinstance, en lijst personeel is niet nodig, want bediende aanmaken maakt automatisch ook personeel aan
+
 class personeel:
     id_personeel = 0
     def __init__(self,id,naam,leeftijd,geslacht, functie):

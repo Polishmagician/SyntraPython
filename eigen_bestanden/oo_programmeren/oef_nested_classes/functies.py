@@ -120,9 +120,9 @@ def ken_wagen_toe_aan_bediende():
 def verwijder_personeelslid():
     toon_personeel()
     per = int(input("Geef me het ID dat je wilt verwijderen? "))
-    for index, item in enumerate(personeel_data_class):
+    for item in personeel_data_class:
         if item.id == per:
-            del personeel_data_class[index]
+            personeel_data_class.remove(item) #Remove gebruikt ipv del, dan is enumerate niet nodig
     return personeel_data_class
 
 def verander_loon():

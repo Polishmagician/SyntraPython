@@ -6,7 +6,7 @@ def main():
         print("\nMenu:")
         print("1) Toon alle *KEUZE*")
         print("2) Voeg data toe")
-        print("3) TBD")
+        print("3) Pas aan")
         print("4) TBD")
         print("5) TBD")
         print("6) TBD")

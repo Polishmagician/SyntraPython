@@ -1,14 +1,16 @@
+from eigen_bestanden.oo_programmeren.bibliotheek.classes_tkinter import TkinterConsole
 from functies import *
 import tkinter as tk
 from tkinter import Tk, Text,ttk
 from ctypes import windll
 
-def on_button_click(inputtext, output_label):
+def on_button_click(inputtext, output_label,root):
     """Handle button clicks and retrieve user input."""
     keuze = inputtext.get('1.0', 'end').strip()  # Retrieve the latest input
     if keuze in functies_dict.keys():
         output_label.config(text="OK")  # Update output label
         print("ok")  # Print to console for debugging
+        root.destroy()
         functies_dict[keuze]()
     else:
         output_label.config(text=f"Geen functie gevonden voor keuze: '{keuze}'")
@@ -42,7 +44,7 @@ def main():
     gobutton = ttk.Button(
         root,
         text='Go',
-        command=lambda: on_button_click(inputtext, output_label)  # Pass inputtext and output_label
+        command=lambda: on_button_click(inputtext, output_label,root)  # Pass inputtext and output_label
     )
     gobutton.pack(ipadx=5, ipady=5, expand=True)
 

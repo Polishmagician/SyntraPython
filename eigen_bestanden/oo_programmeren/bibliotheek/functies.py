@@ -1,8 +1,17 @@
 from data import *
+from classes_tkinter import *
+import tkinter as tk
+from tkinter import Tk, Text,ttk
+from ctypes import windll
 
 
 def toon_data():
-    filter_csv_keuze = input("Welk overzicht wil je hebben? (A,B,L,U) ").upper()
+    window = tk.Tk()
+    console = TkinterConsole(window)
+    custom_input = console.custom_input
+    filter_csv_keuze = custom_input("Welke groep wil je hebben?").upper()
+    print(filter_csv_keuze)
+    # filter_csv_keuze = input("Welk overzicht wil je hebben? (A,B,L,U) ").upper()
     filter_csv_dict_data = {"A": data_auteur, "B": data_boeken, "L": data_lezer, "U": data_uitleningen}
     filter_csv_dict_class = {"A": auteur, "B": boek, "L": lezer, "U": uitleningen}
     headers = filter_csv_dict_class[filter_csv_keuze].headers
